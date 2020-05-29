@@ -1,0 +1,7 @@
+# perfsonar.yml main perfSONAR config
+
+- name: elastic
+  hosts:
+    - elastic
+  roles:
+    - ansible-role-elastic
