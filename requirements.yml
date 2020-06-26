@@ -1,3 +1,4 @@
 # Install perfsonar roles
 - src: https://github.com/UMNET-perfSONAR/ansible-role-elastic.git
 - src: https://github.com/perfsonar/ansible-role-perfsonar-testpoint
+- src: https://github.com/perfsonar/ansible-role-perfsonar-installer
