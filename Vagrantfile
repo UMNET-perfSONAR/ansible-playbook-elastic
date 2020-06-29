@@ -4,9 +4,10 @@
 
 
 hosts = [
-      [ "elastic",            "10.0.0.2" ],
+      
       [ "pi-point",           "10.0.0.3" ],
-      [ "testpoint",          "10.0.0.4" ]
+      [ "elastic",            "10.0.0.2" ]
+      #[ "testpoint",          "10.0.0.4" ]
 
       # This is built last so it can provision the others
       #[ "controller",           "10.0.0.10" ]
@@ -56,12 +57,20 @@ Vagrant.configure("2") do |config|
         echo "#{etc_hosts}" >> /etc/hosts.build
         mv -f /etc/hosts.build /etc/hosts
 	
-	SHELL
+      SHELL
 
       config.vm.provision "ansible" do |ansible|
 	ansible.verbose = "v"
 	ansible.playbook = "vagrant.yml"
       end
-    end  # Config
+      
+      if name == "elastic"
+        host.vm.network "forwarded_port", guest: 15672, host: "15672", host_ip: "198.111.224.158"
+        host.vm.network "forwarded_port", guest: 9200, host: "9200", host_ip: "198.111.224.158"
+        host.vm.network "forwarded_port", guest:5601, host: "5601", host_ip: "198.111.224.158"
+        # ELK setup goes here
+      end 
+       
+   end  # Config
   end  # hosts.each
 end
