@@ -10,6 +10,9 @@
   become_user: root
   roles:
     - ansible-role-perfsonar-testpoint
+    - ansible-role-rabbitmq
+
+
 
 - hosts: elastic
   remote_user: vagrant
@@ -18,3 +21,4 @@
   become_user: root
   roles:
     - ansible-role-elastic
+    - ansible-role-rabbitmq
