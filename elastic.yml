@@ -4,5 +4,4 @@
   hosts:
     - elastic
   roles:
-    - ansible-role-rabbitmq
     - ansible-role-elastic
