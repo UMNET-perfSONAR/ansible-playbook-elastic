@@ -38,6 +38,22 @@ Run the playbook:
 ansible-playbook elastic.yml
 ```
 
+If host machine requires ssh password, use the following commands:
+
+```
+ansible \
+  --ask-pass \
+  --ask-become-pass \
+  -i inventory \
+  all -m ping
+  
+ansible-playbook \
+  --ask-pass \
+  --ask-become-pass \
+  -i inventory \
+  elastic.yml
+```
+
 ----------------------
 Developer Instructions
 ----------------------
