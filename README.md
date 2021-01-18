@@ -13,7 +13,7 @@ Get the required roles (ignore errors so we can run this multiple times):
 ansible-galaxy install -r  requirements.yml --ignore-errors
 ```
 
-Set up your inventory.  Connection variables can be added here as well.
+Set up your inventory.  Connection variables can be added here as well. Add the pssid-elk-server ip
 
 ```
 vi inventory/hosts
@@ -29,30 +29,23 @@ vi inventory/group_vars/all/template/*
 Use Ansible ping to verify connectivity to targets:
 
 ```
-ansible all -m ping
-```
-
-Run the playbook:
-
-```
-ansible-playbook elastic.yml
-```
-
-If host machine requires ssh password, use the following commands:
-
-```
 ansible \
   --ask-pass \
   --ask-become-pass \
   -i inventory \
   all -m ping
-  
+```
+
+Run the playbook:
+
+```
 ansible-playbook \
   --ask-pass \
   --ask-become-pass \
   -i inventory \
   elastic.yml
 ```
+
 
 ----------------------
 Developer Instructions
